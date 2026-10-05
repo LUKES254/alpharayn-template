@@ -1,0 +1,376 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Quill Rich Text Editor Styles */
+.quill-wrapper {
+  height: 400px !important;
+  max-height: 400px !important;
+  overflow: hidden !important;
+}
+
+.quill-wrapper .quill {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.quill-wrapper .ql-toolbar {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background-color: hsl(var(--muted));
+  border-color: hsl(var(--border));
+  flex-shrink: 0 !important;
+}
+
+.quill-wrapper .ql-container {
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border-color: hsl(var(--border));
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.quill-wrapper .ql-editor {
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow-y: auto !important;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.quill-wrapper .ql-editor.ql-blank::before {
+  color: hsl(var(--muted-foreground));
+  font-style: normal;
+}
+
+/* Dark mode support */
+.dark .quill-wrapper .ql-toolbar {
+  background-color: hsl(var(--muted));
+}
+
+.dark .quill-wrapper .ql-editor {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+.dark .quill-wrapper .ql-stroke {
+  stroke: hsl(var(--foreground));
+}
+
+.dark .quill-wrapper .ql-fill {
+  fill: hsl(var(--foreground));
+}
+
+.dark .quill-wrapper .ql-picker-label {
+  color: hsl(var(--foreground));
+}
+
+/* Standalone Quill editor (for /admin/new page) */
+.quill {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+.quill .ql-toolbar {
+  flex-shrink: 0 !important;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.quill .ql-container {
+  flex: 1 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.quill .ql-editor {
+  height: 100% !important;
+  overflow-y: auto !important;
+}
+
+/* Blog Content Styles - for rendering Quill HTML output */
+.blog-content {
+  line-height: 1.8;
+}
+
+.blog-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.blog-content h2 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.blog-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.blog-content h4,
+.blog-content h5,
+.blog-content h6 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-content p {
+  margin-bottom: 1.25rem;
+}
+
+.blog-content ul,
+.blog-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.25rem;
+  padding-left: 0.5rem;
+}
+
+.blog-content ul {
+  list-style-type: disc;
+}
+
+.blog-content ol {
+  list-style-type: decimal;
+}
+
+.blog-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.blog-content li > ul,
+.blog-content li > ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-content strong,
+.blog-content b {
+  font-weight: 700;
+}
+
+.blog-content em,
+.blog-content i {
+  font-style: italic;
+}
+
+.blog-content u {
+  text-decoration: underline;
+}
+
+.blog-content s,
+.blog-content strike {
+  text-decoration: line-through;
+}
+
+.blog-content a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.blog-content a:hover {
+  opacity: 0.8;
+}
+
+.blog-content blockquote {
+  border-left: 4px solid hsl(var(--primary));
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 1.25rem;
+  font-style: italic;
+  color: hsl(var(--muted-foreground));
+}
+
+.blog-content pre {
+  background-color: hsl(var(--muted));
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+}
+
+.blog-content code {
+  background-color: hsl(var(--muted));
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.blog-content pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+.blog-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.blog-content video,
+.blog-content iframe {
+  max-width: 100%;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.blog-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.25rem;
+}
+
+.blog-content th,
+.blog-content td {
+  border: 1px solid hsl(var(--border));
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.blog-content th {
+  background-color: hsl(var(--muted));
+  font-weight: 600;
+}
+
+.blog-content hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border));
+  margin: 2rem 0;
+}
+
+/* Feature Cards - Stacked Design with Hover Effect */
+.feature-card {
+  position: relative;
+  width: 280px;
+  min-height: 450px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+  backdrop-filter: blur(10px);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: rotate(var(--rotation));
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dark .feature-card {
+  background: linear-gradient(135deg, rgba(17, 24, 39, 0.95) 0%, rgba(17, 24, 39, 0.9) 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.feature-card:hover {
+  transform: rotate(0deg) scale(1.15) translateY(-20px);
+  z-index: 10;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+}
+
+.dark .feature-card:hover {
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .feature-card {
+    width: 240px;
+    min-height: 420px;
+    padding: 1.5rem;
+  }
+  
+  .feature-card:hover {
+    transform: rotate(0deg) scale(1.05) translateY(-10px);
+  }
+}
+
+/* Scrollbar Hide */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
